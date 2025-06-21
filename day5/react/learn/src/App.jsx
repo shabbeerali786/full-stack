@@ -7,6 +7,7 @@ import Navbar from './components/Navbar.jsx'
 import Forms from './hooks/forms.jsx'
 import State from './hooks/State.jsx'
 import Effect from './hooks/Effect.jsx'
+import Reducer from './hooks/Reducer.jsx'     
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
       <Route path='/form' element={<Forms/>}/>
       <Route path='/state' element={<State/>}/>
       <Route path='/Effect' element={<Effect/>}/>
+      <Route path= '/Reducer' element={<Reducer/>}/>
     </Routes>
     </>
   )

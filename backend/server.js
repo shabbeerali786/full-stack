@@ -30,14 +30,28 @@ app.post('/post', async (req, res) => {
     }
 });
 
-app.put('/put:id', async (req, res) => {
-    try{
-        const updatedUser = await User.findByIdAndUpdate
+// Update a user by ID
+app.put('/put/:id', async (req, res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(400).json(error);
     }
-
 });
-app.delete('/delete', (req, res) => {
-    res.send('Delete request received!');   
+
+// Delete a user by ID
+app.delete('/delete/:id', async (req, res) => {
+    try {
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
+        res.json(deletedUser);
+    } catch (error) {
+        res.status(400).json(error);
+    }
 });
 
 app.listen(3000, () => {
